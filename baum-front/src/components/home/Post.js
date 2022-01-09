@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "../../App.css";
 
 function Post(props) {
+  const [thumbsUp, setThumbsUp] = useState(false);
+
   return (
     <article className="post">
       <div className="post-header">
@@ -13,7 +16,17 @@ function Post(props) {
       <p className="post-mats">{props.postData.mats}</p>
       <p className="post-work">{props.postData.work}</p>
       <div className="post-footer">
-        <i className="far fa-thumbs-up"></i>
+        <div
+          onClick={() => {
+            setThumbsUp(!thumbsUp);
+          }}
+        >
+          {thumbsUp ? (
+            <i class="fas fa-thumbs-up"></i>
+          ) : (
+            <i class="far fa-thumbs-up"></i>
+          )}
+        </div>
         <i className="far fa-thumbs-down"></i>
         <i className="far fa-comment"></i>
         <div className="post-footer-text">7 Comments</div>
